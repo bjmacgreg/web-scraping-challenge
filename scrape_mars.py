@@ -7,7 +7,7 @@ from splinter import Browser
 from splinter.exceptions import ElementDoesNotExist
 import urllib.request
 import urllib.parse
-import re
+#import re
 import shutil
 
 def init_browser():
@@ -64,24 +64,11 @@ def scrape():
     #### Mars Facts
 
     url = 'https://space-facts.com/mars/'
-
     tables = pd.read_html(url)
-    type(tables)
-
-    tables[0]
-
     mars_facts_df = tables[0]
-    mars_facts_df.set_index([0], inplace=True)
-
-    mars_facts_df.rename(columns=mars_facts_df.iloc[0]).drop(mars_facts_df.index[0])
-
-    mars_facts_html_table = mars_facts_df.to_html()
+    mars_facts_html_table = mars_facts_df.to_html(header=False, border=False, index=False)
     mars_facts_html_table = mars_facts_html_table.replace('\n', '')
-
-    #Add table to dictionary
     mars["table"] = mars_facts_html_table
-
-    ###Make sure extra header row is gone###
 
 
     #### Mars Hemispheres
