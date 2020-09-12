@@ -9,6 +9,7 @@ import urllib.request
 import urllib.parse
 #import re
 import shutil
+import time
 
 def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -36,6 +37,7 @@ def scrape():
 
     # Fetch headline and text  
     browser.visit(url)
+    time.sleep(10) 
     news_title = browser.find_by_tag('h1').value
     news_p = browser.find_by_id('primary_column').value
     news_p = news_p.replace('\n', ' ')
@@ -75,7 +77,7 @@ def scrape():
 
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)
-
+    time.sleep(10) 
     # Retrieve page with the requests module
     response = requests.get(url)
 
