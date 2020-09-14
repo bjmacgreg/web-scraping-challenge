@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,81 +21,135 @@
         <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Press to refresh</a></p>
       </div>
     </div>    
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="container">
+            <div class="jumbotron text-center">
+              <h3>Featured Mars photo</h3>
+            </div>
+          </div>
+      </div>
+        <div class="col-6">
+          <div class="container">
+            <div class="jumbotron text-center">
+              <h3>Facts and Figures</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- <div class="w-100"></div> -->
+
+    <div class="row">
+      <div class="col-6">   
+        <div class="container">
+          <div class="container">
+            <img src={{mars.featured_image_url}} class="img-fluid" alt="Responsive image">
+          </div>
+        </div>
+      </div>
+         
+    
+      <div class="col-6">              
+        <div class="container">               
+          <div class="table-responsive">
+            <table class="table table-hover"> 
+              <tbody> 
+                <tr> 
+                  <td><p><strong>Equatorial Diameter:</strong></p></td> 
+                  <td>6,792 km</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Polar Diameter:</strong></p></td> 
+                  <td>6,752 km</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Mass:</td> 
+                  <td>6.39 × 10^23 kg (0.11 Earths)</strong></p></td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Moons:</strong></p></td> 
+                  <td>2 (Phobos &amp; Deimos)</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Orbit Distance:</strong></p></td> 
+                  <td>227,943,824 km (1.38 AU)</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Orbit Period:</strong></p></td> 
+                  <td>687 days (1.9 years)</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Surface Temperature:</strong></p></td> 
+                  <td>-87 to -5 °C</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>First Record:</strong></p></td> 
+                  <td>2nd millennium BC</td> 
+                </tr> 
+                <tr> 
+                  <td><p><strong>Recorded By:</strong></p></td> 
+                  <td>Egyptian astronomers</td> 
+                </tr> 
+              </tbody>
+            </table>
+          </div>
+        </div>
+<!-- CAPTION FOR FIGURE -->
+
+      </div>          
+    </div>  
     
     <div class="container">
-      <div class="jumbotron text-center">
-        <h3>Featured Mars photo</h3>
-      </div>
-      <img src={{mars.featured_image_url}}>
-    </div>
-   
-    <div class="container text-center">
-      <h3 class="jumbotron">{{mars.news_title }}</h3>
-      <div>
-        <p class="text-left">{{ mars.news_p }}<p>
+      <div class="row">
+        <div class="col-12>    
+          <div class="container text-center">
+            <h3 class="jumbotron">{{mars.news_title }}</h3>
+          <div>
+          <p class="text-left">{{ mars.news_p }}<p>
+        </div>
       </div>
     </div>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12>   
+          <div class="jumbotron text-center">
+            <h3>Martian Hemispheres</h3>
+          </div>
+        </div>           
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <h3 >{{mars.hemisphere_image_urls[0].title}}</h3>
+          <img src={{mars.hemisphere_image_urls[0].img_url}} class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-6">        
+          <h3 >{{mars.hemisphere_image_urls[1].title}}</h3>
+          <img src={{mars.hemisphere_image_urls[1].img_url}} class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="w-100">
+        </div>
+        <div class="col-6">
+          <h3 >{{mars.hemisphere_image_urls[2].title}}</h3>
+          <img src={{mars.hemisphere_image_urls[2].img_url}} class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-6">             
+          <h3 >{{mars.hemisphere_image_urls[3].title}}</h3>
+            <img src={{mars.hemisphere_image_urls[3].img_url}} class="img-fluid" alt="Responsive image">
+        </div>
+      </div>
+    </div>
+
     
 
-    <!-- <table class="table">{{ mars.table }}</table> -->
 
-    <!-- <table class="table"> -->
-    <div class="container">
-      <div class="jumbotron text-center">
-        <h3>Facts and Figures</h3>
-      </div>
-      <table class="table table-hover"> 
-        <tbody> 
-          <tr> 
-            <td><p><strong>Equatorial Diameter:</strong></p></td> 
-            <td>6,792 km</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Polar Diameter:</strong></p></td> 
-            <td>6,752 km</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Mass:</td> 
-            <td>6.39 × 10^23 kg (0.11 Earths)</strong></p></td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Moons:</strong></p></td> 
-            <td>2 (Phobos &amp; Deimos)</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Orbit Distance:</strong></p></td> 
-            <td>227,943,824 km (1.38 AU)</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Orbit Period:</strong></p></td> 
-            <td>687 days (1.9 years)</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Surface Temperature:</strong></p></td> 
-            <td>-87 to -5 °C</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>First Record:</strong></p></td> 
-            <td>2nd millennium BC</td> 
-          </tr> 
-          <tr> 
-            <td><p><strong>Recorded By:</strong></p></td> 
-            <td>Egyptian astronomers</td> 
-          </tr> 
-        </tbody>
-      </table>
-    </div>
-    <div class="container">
-      <div class="jumbotron text-center">
-        <h3>Martian Hemispheres</h3>
-      </div>
-      <!-- <img src=mars_app.mars.find({"hemisphere_image_urls.0":{"img_url"}})> -->
-      <!-- <img src={{mars.hemisphere_image_urls[0].image_url}}> -->
-      <!-- <img src={{mars.featured_image_url}}>
-      {$slice:[hemisphere_image_urls, 0, 1 ]} -->
-      <!-- <img src={{$slice:[hemisphere_image_urls, 0, 1 ]}}> -->
-      <img src={{$slice:[hemisphere_image_urls[0,1]}}>
-    </div>
 
 
 
