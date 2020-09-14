@@ -89,10 +89,11 @@
         <h3>Martian Hemispheres</h3>
       </div>
       <!-- <img src=mars_app.mars.find({"hemisphere_image_urls.0":{"img_url"}})> -->
-      <img src = mars_app.mars.hemisphere_image_urls.find({tags:["0", "img_url"]})>
-      
-      <!-- {$slice:[hemisphere_image_urls, 0, 1 ]} -->
-      
+      <!-- <img src={{mars.hemisphere_image_urls[0].image_url}}> -->
+      <!-- <img src={{mars.featured_image_url}}>
+      {$slice:[hemisphere_image_urls, 0, 1 ]} -->
+      <!-- <img src={{$slice:[hemisphere_image_urls, 0, 1 ]}}> -->
+      <img src={{$slice:[hemisphere_image_urls[0,1]}}>
     </div>
 
 

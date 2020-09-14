@@ -99,11 +99,9 @@ def scrape():
         html = browser.html
         soup = bs(html, 'lxml')
         imgs = soup.find(class_='downloads')
-        html = browser.html
-        soup = bs(html, 'lxml')
         title = soup.find(class_ = 'title').get_text()
-        img_url = [a['href'] for a in soup.select('a:contains(Original)')]
-        img_url = str(*img_url)
+        images=browser.find_by_xpath('/html/body/div[1]/div[1]/div[2]/img')  
+        img_url =  images["src"]  
         hemisphere_image_urls.append({'title':title, 'img_url':img_url})
     browser.quit()
 
