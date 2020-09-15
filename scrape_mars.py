@@ -39,9 +39,8 @@ def scrape():
     browser.visit(url)
     time.sleep(10) 
     news_title = browser.find_by_tag('h1').value
-    news_p = browser.find_by_id('primary_column').value
+    news_p = browser.find_by_css('div[id="primary_column"]').text
     news_p = news_p.replace('\n', ' ')
-    #tried a million ways to get rid of remaining \ (see old notebook), no luck yet
 
     # Add title and text to data dictionary 
     mars["news_title"] = news_title
@@ -59,9 +58,12 @@ def scrape():
     base = "https://www.jpl.nasa.gov"
     featured_image_url = urllib.parse.urljoin(base, partial_address)
 
-    #Add url to dictionary
+    #Get brief image description
+    image_description = soup.find_all('a', class_='fancybox')[1].get('data-description').strip()
+
+    #Add url and description to dictionary
     mars["featured_image_url"] = featured_image_url    
-    
+    mars["image_description"] = image_description
     
     #### Mars Facts
 
@@ -77,20 +79,21 @@ def scrape():
 
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)
-    time.sleep(10) 
+
     # Retrieve page with the requests module
     response = requests.get(url)
 
     # Create BeautifulSoup object; parse with 'lxml'
     soup = bs(response.text, 'lxml')
 
-    #Find titles and links for full-scale images
+    #Find titles and links for full-scale images and information pages
 
     base = "https://astrogeology.usgs.gov"
     hemisphere_image_urls = []
+    thumbnail_urls = []
 
     for link in soup.find_all(class_='itemLink product-item'):
-        partial = link.get('href')    
+        partial = link.get('href')   
         thumbnail_url = urllib.parse.urljoin(base, partial)
         browser.visit(thumbnail_url)
         xpath = "//a[@class='open-toggle']"
@@ -102,11 +105,12 @@ def scrape():
         title = soup.find(class_ = 'title').get_text()
         images=browser.find_by_xpath('/html/body/div[1]/div[1]/div[2]/img')  
         img_url =  images["src"]  
+        thumbnail_urls.append({'title':title, 'thumbnail_url':thumbnail_url})
         hemisphere_image_urls.append({'title':title, 'img_url':img_url})
+
     browser.quit()
-
     mars["hemisphere_image_urls"] = hemisphere_image_urls
-
+    mars["thumbnail_urls"] = thumbnail_urls
     return mars
 
 
