@@ -21,6 +21,11 @@ def scrape():
     #Dictionary to collect data
     mars = {}
 
+    #### Possible background image####
+    dream = 'static/images/mission_to_mars.png'
+    mars["dream"] = dream
+    
+
     #### Latest NASA Mars News Story####
 
     # URL of page to be scraped
