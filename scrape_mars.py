@@ -1,4 +1,4 @@
-#import pymongo
+
 from bs4 import BeautifulSoup as bs
 import os
 import requests
@@ -7,9 +7,7 @@ from splinter import Browser
 from splinter.exceptions import ElementDoesNotExist
 import urllib.request
 import urllib.parse
-#import re
 import shutil
-import time
 
 def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -21,10 +19,9 @@ def scrape():
     #Dictionary to collect data
     mars = {}
 
-    #### Possible background image####
+    #### Title image####
     dream = 'static/images/mission_to_mars.png'
     mars["dream"] = dream
-    
 
     #### Latest NASA Mars News Story####
 
@@ -42,7 +39,6 @@ def scrape():
 
     # Fetch headline and text  
     browser.visit(url)
-    time.sleep(10) 
     news_title = browser.find_by_tag('h1').value
     news_p = browser.find_by_css('div[id="primary_column"]').text
     news_p = news_p.replace('\n', ' ')
@@ -91,7 +87,6 @@ def scrape():
     soup = bs(response.text, 'lxml')
 
     #Find titles and links for full-scale images and information pages
-
     base = "https://astrogeology.usgs.gov"
     hemisphere_image_urls = []
     thumbnail_urls = []
@@ -105,51 +100,13 @@ def scrape():
         switch.click()
         html = browser.html
         soup = bs(html, 'lxml')
-        imgs = soup.find(class_='downloads')
         title = soup.find(class_ = 'title').get_text()
         images=browser.find_by_xpath('/html/body/div[1]/div[1]/div[2]/img')  
         img_url =  images["src"]  
         thumbnail_urls.append({'title':title, 'thumbnail_url':thumbnail_url})
         hemisphere_image_urls.append({'title':title, 'img_url':img_url})
-
     browser.quit()
     mars["hemisphere_image_urls"] = hemisphere_image_urls
     mars["thumbnail_urls"] = thumbnail_urls
+
     return mars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ## Step 2 - MongoDB and Flask Application
-# 
-# Use MongoDB with Flask templating to create a new HTML page that displays all of the information that was scraped from the URLs above.
-# 
-# * Start by converting your Jupyter notebook into a Python script called `scrape_mars.py` with a function called `scrape` that will execute all of your scraping code from above and return one Python dictionary containing all of the scraped data.
-# 
-# * Next, create a route called `/scrape` that will call your `scrape_mars.scrape` function. Note that you'll have to import `scrape_mars.py`. 
-# 
-#   * Store the dictionary that gets returned to your MongoDB.
-# 
-# * Create an index route `/` that will query your Mongo database and pass the Mars data into an HTML template to be displayed. 
-# 
-# * Create a template HTML file called `index.html` that will take the dictionary of Mars data and display its values in the appropriate HTML elements. Use the following as a guide for what the final product should look like, but feel free to create your own design.
-# 
-# ![final_app_part1.png](Images/final_app_part1.png)
-# ![final_app_part2.png](Images/final_app_part2.png)

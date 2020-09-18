@@ -13,51 +13,37 @@
     <title>Martian Chronicle</title>
   </head>
 
+    <body>
 
     <!-- Title -->
-  <body>
-    <div class="sticky-top">
       <div class="container">
-        <div class="jumbotron text-center">
-          <h1>Martian Chronicle</h1>
-          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Press to refresh</a></p>
-        </div>
-      </div>
-    </div>    
-
-    <!--Possible background photo -->
-    <div class="container">        
-      <div class="row">
-          <div class="col-12">   
-            <div class="container">
-              <h1>where's the gd pic</h1>
-              <img src={{mars.dream}} class="img-fluid" alt="Responsive image">
-              <!-- <img src="../static/images/mission_to_mars.png⁨⁩⁩" class="img-fluid" alt="Responsive image" /> -->
-              <!-- <img src="{{url_for('static', filename='mission_to_mars.png')}}⁨⁩⁩" class="img-fluid" alt="Responsive image" /> -->
-              <!-- <img src="../assets/img⁨⁩/mission_to_mars.pdf" class="img-fluid" alt="Responsive image"> -->
-              <!-- <img src={{mars.featured_image_url}} class="img-fluid" alt="Responsive image"> -->              
-            </div>
+        <div class="jumbotron jumbotron-fluid bg-dark text-center">
+          <div class="container text-white">
+            <h1>Martian Chronicle</h1>
+          <div class="jumbotron-background">
+            <img src={{mars.dream}} class="img-fluid mb-5" alt="Responsive image">
+          </div>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button" >Press to refresh</a></p>
           </div>
         </div>
       </div>
-    </div>
 
     <!--Featured photo headline -->
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <div class="container">
-            <div class="jumbotron text-center">
-              <h3>Featured Mars photo</h3>
+          <div class="container text-white">
+            <div class="jumbotron text-center" style="background-color:#b72d0a" >
+              <h1>Featured Mars photo</h1>
             </div>
           </div>
         </div>
 
       <!--Table headline -->      
         <div class="col-6">
-          <div class="container">
-            <div class="jumbotron text-center">
-              <h3>Facts and Figures</h3>
+          <div class="container text-white">
+            <div class="jumbotron text-center" style="background-color:#b72d0a">
+              <h1>Facts and Figures</h1>
             </div>
           </div>
         </div>
@@ -138,8 +124,8 @@
     <div class="container mt-3">
       <div class="row">
         <div class="col-12">
-          <div class="container text-center">
-            <h3 class="jumbotron">{{mars.news_title }}</h3>
+          <div class="container text-center text-white">
+            <h1 class="jumbotron" style="background-color:#b72d0a">{{mars.news_title }}</h1>
           </div>  
           <div>
             <p class="text-left">{{ mars.news_p }}<p>
@@ -152,9 +138,9 @@
     <div class="container">
       <div class="row">
         <div class="col-12">   
-          <div class="jumbotron text-center">
-            <h3>Martian Hemispheres</h3>  
-            <h5>Click Info links for image details.</h5> 
+          <div class="jumbotron text-center text-white" style="background-color:#b72d0a">
+            <h1>Martian Hemispheres</h1>  
+            <h4>Click Info links for image details from USGS</h4> 
           </div>
         </div>           
       </div>
@@ -164,26 +150,26 @@
       <div class="container mb-5">
        <div class="row">
          <div class="col-6">
-            <h3 >{{mars.hemisphere_image_urls[0].title}}</h3>        
-            <a href={{mars.thumbnail_urls[0].thumbnail_url}} class="badge badge-info">Info</a>
+            <h4 >{{mars.hemisphere_image_urls[0].title}}</h4>        
             <img src={{mars.hemisphere_image_urls[0].img_url}} class="img-fluid" alt="Responsive image">
+            <a href={{mars.thumbnail_urls[0].thumbnail_url}} class="badge badge-info">Info</a>
          </div>
          <div class="col-6"> 
-            <h3 >{{mars.hemisphere_image_urls[1].title}}</h3>
-            <a href={{mars.thumbnail_urls[1].thumbnail_url}} class="badge badge-info">Info</a>
+            <h4 >{{mars.hemisphere_image_urls[1].title}}</h4>            
             <img src={{mars.hemisphere_image_urls[1].img_url}} class="img-fluid" alt="Responsive image">
-         </div>
+            <a href={{mars.thumbnail_urls[1].thumbnail_url}} class="badge badge-info">Info</a>
+          </div>
          <div class="w-100">
          </div>
          <div class="col-6 mt-4">
-            <h3 >{{mars.hemisphere_image_urls[2].title}}</h3>
-            <a href={{mars.thumbnail_urls[2].thumbnail_url}} class="badge badge-info">Info</a>
+            <h4 >{{mars.hemisphere_image_urls[2].title}}</h4>
             <img src={{mars.hemisphere_image_urls[2].img_url}} class="img-fluid" alt="Responsive image">
+            <a href={{mars.thumbnail_urls[2].thumbnail_url}} class="badge badge-info">Info</a>
          </div>
          <div class="col-6 mt-4">
-            <h3 >{{mars.hemisphere_image_urls[3].title}}</h3>
-            <a href={{mars.thumbnail_urls[3].thumbnail_url}} class="badge badge-info">Info</a>
+            <h4 >{{mars.hemisphere_image_urls[3].title}}</h4>
             <img src={{mars.hemisphere_image_urls[3].img_url}} class="img-fluid" alt="Responsive image">
+            <a href={{mars.thumbnail_urls[3].thumbnail_url}} class="badge badge-info">Info</a>
          </div>
         </div>
      </div>
